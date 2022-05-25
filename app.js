@@ -1,6 +1,7 @@
 const hands = ["rock", "paper", "scissors"];
 let computerSelection;
 let userSelection;
+let winner;
 computerSelection = computerPlay();
 userSelection = userPlay();
 
