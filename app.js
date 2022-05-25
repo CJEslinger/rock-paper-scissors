@@ -6,7 +6,7 @@ let outcome;
 computerSelection = computerPlay();
 userSelection = userPlay();
 outcome = playRound();
-
+winner = '';
 
 function computerPlay() {
     return hands[Math.floor(Math.random()*hands.length)];
@@ -37,7 +37,7 @@ function playRound(user, computer) {
     
     else {
         checkWinner();
-        return winner;
+        return winner + "Winner!";
     }
 
 }
@@ -52,3 +52,23 @@ function checkIfTie() {
     }
 }
 
+function checkWinner() {
+    if (userSelection == 'rock' && computerSelection == 'scissors') {
+        winner = 'you';
+    }
+    if (userSelection == 'paper' && computerSelection == 'rock') {
+        winner = 'you';
+    }
+    if (userSelection == 'scissors' && computerSelection == 'paper') {
+        winner = 'you';
+    }
+    if (computerSelection == 'rock' && computerSelection == 'scissors') {
+        winner = 'the computer';
+    }
+    if (computerSelection == 'paper' && computerSelection == 'rock') {
+        winner = 'the computer';
+    }
+    if (computerSelection == 'scissors' && computerSelection == 'paper') {
+        winner = 'the computer';
+    }
+}
