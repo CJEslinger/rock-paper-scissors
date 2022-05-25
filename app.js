@@ -32,12 +32,14 @@ function userPlay() {
 
 function playRound(user, computer) {
     if (checkIfTie()) {
-        console.log("It's a tie!");
+        return "It's a tie!";
     }
-
+    
     else {
         checkWinner();
+        return winner;
     }
+
 }
 
 function checkIfTie() {
