@@ -2,16 +2,11 @@ const hands = ["rock", "paper", "scissors"];
 let computerSelection;
 let userSelection;
 let winner;
+let outcome;
 computerSelection = computerPlay();
 userSelection = userPlay();
+outcome = playRound();
 
-game();
-
-function game() {
-    playRound(computerSelection, userSelection);
-    console.log(userSelection);
-    console.log(computerSelection);
-}
 
 function computerPlay() {
     return hands[Math.floor(Math.random()*hands.length)];
@@ -40,6 +35,9 @@ function playRound(user, computer) {
         console.log("It's a tie!");
     }
 
+    else {
+        checkWinner();
+    }
 }
 
 function checkIfTie() {
@@ -51,3 +49,4 @@ function checkIfTie() {
         return false;
     }
 }
+
