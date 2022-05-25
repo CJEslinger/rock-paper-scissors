@@ -4,13 +4,26 @@ let userSelection;
 let winner;
 let outcome;
 let hand;
+let userScore = 0;
+let computerScore = 0;
+
 computerSelection = computerPlay();
 userSelection = userPlay();
-outcome = playRound();
 winner = '';
+game()
 
 function game() {
-    console.log(outcome);
+    for (let i = 0; i < 4; i++) {
+        if (winner == 'you') {
+            userScore++;
+        }
+        if (winner == 'the computer') {
+            computerScore++;
+        }
+        playRound()
+    }
+    console.log('User Score: ' + userScore.toString() +':'+'\nComputer Score: ' + computerScore.toString())
+
 }
 
 function computerPlay() {
@@ -19,7 +32,8 @@ function computerPlay() {
 
 function userPlay() {
     hand = prompt("Enter rock, paper, or scissors");
-        switch(hand) {
+    hand = hand.toLowerCase(); 
+    switch(hand) {
             case 'rock':
                 return hand;
             case 'paper':
@@ -35,6 +49,8 @@ function userPlay() {
 }
 
 function playRound(user, computer) {
+    computerSelection = computerPlay();
+    userSelection = userPlay();
     if (checkIfTie()) {
         console.log("It's a tie!");
     }
