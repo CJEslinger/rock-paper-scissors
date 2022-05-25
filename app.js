@@ -3,19 +3,22 @@ let computerSelection;
 let userSelection;
 let winner;
 let outcome;
+let hand;
 computerSelection = computerPlay();
 userSelection = userPlay();
 outcome = playRound();
 winner = '';
+
+function game() {
+    console.log(outcome);
+}
 
 function computerPlay() {
     return hands[Math.floor(Math.random()*hands.length)];
 }
 
 function userPlay() {
-    let hand = prompt("Enter rock, paper, or scissors");
-    if (typeof hand === 'string') {
-        hand = hand.toLowerCase();
+    hand = prompt("Enter rock, paper, or scissors");
         switch(hand) {
             case 'rock':
                 return hand;
@@ -25,19 +28,20 @@ function userPlay() {
                 return hand;
             default:
                 console.log("Invalid, type rock, paper or scissors.");
-                userPlay();
+                return userPlay();
+            
         }
-    }
+   
 }
 
 function playRound(user, computer) {
     if (checkIfTie()) {
-        return "It's a tie!";
+        console.log("It's a tie!");
     }
     
     else {
-        checkWinner();
-        return winner + "Winner!";
+        winner = checkWinner();
+        console.log(winner + " is the winner!");
     }
 
 }
@@ -54,21 +58,21 @@ function checkIfTie() {
 
 function checkWinner() {
     if (userSelection == 'rock' && computerSelection == 'scissors') {
-        winner = 'you';
+        return 'you';
     }
     if (userSelection == 'paper' && computerSelection == 'rock') {
-        winner = 'you';
+        return 'you';
     }
     if (userSelection == 'scissors' && computerSelection == 'paper') {
-        winner = 'you';
+        return 'you';
     }
-    if (computerSelection == 'rock' && computerSelection == 'scissors') {
-        winner = 'the computer';
+    if (computerSelection == 'rock' && userSelection == 'scissors') {
+        return 'the computer';
     }
-    if (computerSelection == 'paper' && computerSelection == 'rock') {
-        winner = 'the computer';
+    if (computerSelection == 'paper' &&  userSelection == 'rock') {
+        return 'the computer';
     }
-    if (computerSelection == 'scissors' && computerSelection == 'paper') {
-        winner = 'the computer';
+    if (computerSelection == 'scissors' &&  userSelection == 'paper') {
+        return 'the computer';
     }
 }
