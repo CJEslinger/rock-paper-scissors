@@ -7,23 +7,16 @@ let hand;
 let userScore = 0;
 let computerScore = 0;
 
-computerSelection = computerPlay();
-userSelection = userPlay();
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
 winner = '';
 game()
 
 function game() {
-    for (let i = 0; i < 4; i++) {
-        if (winner == 'you') {
-            userScore++;
-        }
-        if (winner == 'the computer') {
-            computerScore++;
-        }
-        playRound()
-    }
-    console.log('User Score: ' + userScore.toString() +':'+'\nComputer Score: ' + computerScore.toString())
 
+    playRound()
 }
 
 function computerPlay() {
@@ -48,7 +41,7 @@ function userPlay() {
    
 }
 
-function playRound(user, computer) {
+function playRound() {
     computerSelection = computerPlay();
     userSelection = userPlay();
     if (checkIfTie()) {
