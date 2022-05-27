@@ -1,0 +1,8 @@
+.winner {
+    color: red;
+}
+
+.scores {
+    display: flex;
+    gap: 16px;
+}

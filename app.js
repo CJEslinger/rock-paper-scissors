@@ -1,7 +1,7 @@
 const hands = ["rock", "paper", "scissors"];
 let computerSelection;
 let userSelection;
-let winner = '';
+let winner;
 let outcome;
 let hand;
 let userScore = 0;
@@ -10,10 +10,22 @@ let computerScore = 0;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
-rock.addEventListener('click', playRound);
-paper.addEventListener('click', playRound);
-scissors.addEventListener('click', playRound);
+const resultsDiv = document.querySelector('.results');
+const currentWinner = document.createElement('h3');
+const buttons = document.querySelectorAll('button');
+let userScoreBoard = document.querySelector('#user-score');
+let computerScoreboard = document.querySelector('#computer-score'); 
 
+resultsDiv.appendChild(currentWinner);
+rock.addEventListener('click', (e) => {
+    e = 'rock';
+    playRound(e)});
+paper.addEventListener('click', (e) => {
+    e = 'paper';
+    playRound(e)});
+scissors.addEventListener('click', (e) => {
+    e = 'scissors';
+    playRound(e)});
 
 
 function game() {
@@ -25,34 +37,22 @@ function computerPlay() {
     return hands[Math.floor(Math.random()*hands.length)];
 }
 
-function userPlay() {
-    hand = prompt("Enter rock, paper, or scissors");
-    hand = hand.toLowerCase(); 
-    switch(hand) {
-            case 'rock':
-                return hand;
-            case 'paper':
-                return hand;
-            case 'scissors':
-                return hand;
-            default:
-                console.log("Invalid, type rock, paper or scissors.");
-                return userPlay();
-            
-        }
-   
-}
 
-function playRound() {
+function playRound(user) {
+    userSelection = user;
+    console.log(userSelection);
     computerSelection = computerPlay();
-    userSelection = userPlay();
     if (checkIfTie()) {
-        console.log("It's a tie!");
+        currentWinner.textContent = `its a tie!`
+        console.log(currentWinner);
+        //console.log("It's a tie!");
     }
     
     else {
         winner = checkWinner();
-        console.log(winner + " is the winner!");
+        currentWinner.textContent = (`${winner} is the winner!`)
+        //updateScore() 
+        console.log(currentWinner);
     }
 
 }

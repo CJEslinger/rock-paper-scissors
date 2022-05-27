@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
 <body>
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
+    <div class="hand-selection">
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissors">scissors</button>
+    </div>
+    <h1>Score</h1>
+    <div class="scores">
+        <h2 id="user-score">User: </h2>
+        <h2 id="computer-score">Computer: </h2>
+    </div>
+    <div class="results">
+        <h3 class="winner"></h3>
+    </div>
 </body>
 </html>
