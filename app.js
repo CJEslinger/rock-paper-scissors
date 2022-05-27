@@ -1,7 +1,7 @@
 const hands = ["rock", "paper", "scissors"];
 let computerSelection;
 let userSelection;
-let winner;
+let winner = '';
 let outcome;
 let hand;
 let userScore = 0;
@@ -10,9 +10,11 @@ let computerScore = 0;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+rock.addEventListener('click', playRound);
+paper.addEventListener('click', playRound);
+scissors.addEventListener('click', playRound);
 
-winner = '';
-game()
+
 
 function game() {
 
