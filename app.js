@@ -2,7 +2,6 @@ const hands = ["rock", "paper", "scissors"];
 let computerSelection;
 let userSelection;
 let winner;
-let outcome;
 let hand;
 let userScore = 0;
 let computerScore = 0;
@@ -15,6 +14,8 @@ const currentWinner = document.createElement('h3');
 const buttons = document.querySelectorAll('button');
 let userScoreBoard = document.querySelector('#user-score');
 let computerScoreboard = document.querySelector('#computer-score'); 
+userScoreBoard.textContent = `User: ${userScore}`;
+computerScoreboard.textContent = `Computer: ${computerScore}`;
 
 resultsDiv.appendChild(currentWinner);
 rock.addEventListener('click', (e) => {
@@ -29,8 +30,12 @@ scissors.addEventListener('click', (e) => {
 
 
 function game() {
-
-    playRound()
+    if (userScore == 5) {
+        alert('User has won!');
+    }
+    if (computerScore == 5) {
+        alert('computer has won!');
+    } else return;
 }
 
 function computerPlay() {
@@ -40,34 +45,27 @@ function computerPlay() {
 
 function playRound(user) {
     userSelection = user;
-    console.log(userSelection);
     computerSelection = computerPlay();
-    if (checkIfTie()) {
-        currentWinner.textContent = `its a tie!`
-        console.log(currentWinner);
-        //console.log("It's a tie!");
-    }
-    
-    else {
-        winner = checkWinner();
+    outCome = checkOutcome();
+    if (outCome !== 'tie') {
+        winner = outCome;
         currentWinner.textContent = (`${winner} is the winner!`)
-        //updateScore() 
-        console.log(currentWinner);
-    }
-
+        updateScore(winner) 
+    } else currentWinner.textContent = 'its a tie!';
+    game();
 }
 
-function checkIfTie() {
-    if (userSelection == computerSelection) {
-        return true;
-    }
-
-    else {
-        return false;
+function updateScore(winner) {
+    if (winner === 'you') {
+        userScore++;
+        userScoreBoard.textContent = `User: ${userScore}`
+    } else {
+        computerScore++
+        computerScoreboard.textContent = `Computer: ${computerScore}`
     }
 }
 
-function checkWinner() {
+function checkOutcome() {
     if (userSelection == 'rock' && computerSelection == 'scissors') {
         return 'you';
     }
@@ -86,4 +84,5 @@ function checkWinner() {
     if (computerSelection == 'scissors' &&  userSelection == 'paper') {
         return 'the computer';
     }
+    else return 'tie';
 }
